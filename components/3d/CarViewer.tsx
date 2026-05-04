@@ -126,8 +126,9 @@ function GSAPAnimator({ carGroupRef, triggerSelector }: { carGroupRef: React.Ref
 
   useEffect(() => {
     if (!carGroupRef.current || !triggerSelector) return;
-
-    const ctx = gsap.context(() => {
+    
+      const ctx = gsap.context(() => {
+        if (!carGroupRef.current) return; // Add this safety check inside the context
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: triggerSelector,
